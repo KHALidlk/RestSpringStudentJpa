@@ -1,0 +1,57 @@
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xmlns:mvc="http://www.springframework.org/schema/mvc"-->
+<!--       xmlns:jpa="http://www.springframework.org/schema/data/jpa"-->
+<!--       xmlns:tx="http://www.springframework.org/schema/tx"-->
+<!--       xsi:schemaLocation="-->
+<!--            http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--            http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd-->
+<!--            http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd-->
+<!--            http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd-->
+<!--            http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd">-->
+
+<!--    &lt;!&ndash; Active les annotations @Controller, @Service, etc. &ndash;&gt;-->
+<!--    <context:component-scan base-package="org.example.jspspring" />-->
+
+<!--    &lt;!&ndash; Active les annotations @RequestMapping &ndash;&gt;-->
+<!--    <mvc:annotation-driven />-->
+
+<!--    &lt;!&ndash; Résolution des vues JSP &ndash;&gt;-->
+<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--        <property name="prefix" value="/WEB-INF/views/" />-->
+<!--        <property name="suffix" value=".jsp" />-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; Bean d'exemple &ndash;&gt;-->
+<!--    <bean id="hello" class="org.example.jspspring.Model.Hello">-->
+<!--        <property name="message" value="Hello, Spring!" />-->
+<!--    </bean>-->
+
+<!--    <bean id="studentRepository" class="org.example.jspspring.Repository.StudentRepoIml" />-->
+<!--    <bean id="studentService" class="org.example.jspspring.Service.StudentRepoimpl">-->
+<!--        <constructor-arg index="0" ref="studentRepoIml"/>-->
+<!--    </bean>-->
+<!--    <bean id="helloService" class="org.example.jspspring.Service.Helloservice" autowire="byType" />-->
+<!--    <bean id="helloServlet" class="org.example.jspspring.Controller.HelloServlet" autowire="byType" />-->
+
+<!--    &lt;!&ndash; Configuration de l'EntityManagerFactory &ndash;&gt;-->
+<!--    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
+<!--        <property name="persistenceUnitName" value="DB"/>-->
+<!--        <property name="jpaVendorAdapter">-->
+<!--            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />-->
+<!--        </property>-->
+<!--        <property name="jpaProperties">-->
+<!--            <props>-->
+<!--                <prop key="hibernate.hbm2ddl.auto">update</prop>-->
+<!--                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+<!--                <prop key="hibernate.show_sql">true</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; Gestionnaire de transactions &ndash;&gt;-->
+<!--    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">-->
+<!--        <property name="entityManagerFactory" ref="entityManagerFactory" />-->
+<!--    </bean>-->
+
+<!--</beans>-->
