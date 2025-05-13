@@ -37,6 +37,7 @@ public class Student {
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "admin_id", nullable = false)
 //    private Admin admin;
+// One student can have multiple authorities
 
     @Override
     public String toString() {
