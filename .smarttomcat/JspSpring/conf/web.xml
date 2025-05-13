@@ -3860,7 +3860,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>tao</extension>
-        <mime-type>application/vnd.tao.intent-module-archive</mime-type>
+        <mime-type>application/vnd.tao.intent-appModule-archive</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>tar</extension>

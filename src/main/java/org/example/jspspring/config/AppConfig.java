@@ -1,9 +1,10 @@
 package org.example.jspspring.config;
 
 import org.example.jspspring.Controller.HelloServlet;
-import org.example.jspspring.Repository.StudentRepo;
+import org.example.jspspring.Controller.ProfController;
+import org.example.jspspring.Repository.ProfRepo;
 import org.example.jspspring.Repository.StudentRepoimpl;
-import org.example.jspspring.Service.Helloservice;
+import org.example.jspspring.Service.ProfService;
 import org.example.jspspring.Service.StudentService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,7 +29,7 @@ public class AppConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/jspstudent");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/ng");
         dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;
@@ -58,14 +59,6 @@ public class AppConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
     }
-
-
-
-    @Bean
-    public Helloservice helloservice() {
-        return new Helloservice();
-    }
-
     @Bean
     public StudentService studentService(StudentRepoimpl studentRepo) {
         return new StudentService(studentRepo);
@@ -73,5 +66,13 @@ public class AppConfig {
     @Bean
     public HelloServlet helloServlet(StudentService studentService) {
         return new HelloServlet(studentService);
+    }
+    @Bean
+    public ProfService profService(ProfRepo profRepo) {
+        return new ProfService(profRepo);
+    }
+    @Bean
+    public ProfController profController(ProfService profService) {
+        return new ProfController(profService);
     }
 }

@@ -8,12 +8,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+
+@Entity
+@Table(name = "students")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "student")
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -23,10 +25,18 @@ public class Student {
     private String name;
 
     private String email;
+
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "student_note", joinColumns = @JoinColumn(name = "student_id"))
+    @CollectionTable(name = "student_notes", joinColumns = @JoinColumn(name = "student_id"))
     @Column(name = "note")
     private List<Double> notes;
+
+//    @ManyToMany(mappedBy = "students")
+//    private List<Module> modules;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "admin_id", nullable = false)
+//    private Admin admin;
 
     @Override
     public String toString() {
@@ -37,5 +47,4 @@ public class Student {
                 ", notes=" + notes +
                 '}';
     }
-// Getters and Setters
 }

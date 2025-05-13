@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,11 +18,27 @@ public class StudentService {
     public StudentService(StudentRepoimpl studentRepo) {
         this.studentRepo = studentRepo;
     }
-
-    // Méthode pour ajouter un étudiant
+    public Optional<Student> findByName(String name)
+    {
+        return studentRepo.findByName(name);
+    }
+    public Optional<Student> findByEmail(String email)
+    {
+        return studentRepo.findByEmail(email);
+    }    // Méthode pour ajouter un étudiant
     public void addStudent(StudentDTO studentDTO) {
         Student studentEntity = StudentMapper.toEntity(studentDTO);
         studentRepo.save(studentEntity);
+    }
+    public Student findById(int id)
+    {
+        return studentRepo.findById(id);
+    }
+   public void deleteStudent(Student student) {
+        studentRepo.delete(student);
+    }
+    public void updateStudent(Student student) {
+        studentRepo.update(student);
     }
 
     // Méthode pour récupérer tous les étudiants
@@ -31,4 +48,5 @@ public class StudentService {
                 .map(StudentMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
 }
